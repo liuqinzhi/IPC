@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.lqz.liuqinzhi.first">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--
+        <service
+            android:name=".AIDLService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":server">
+            <intent-filter>
+                <action android:name="com.lqz.first.aidl"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
+        -->
+        <service
+            android:name=".MessengerService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":messengerServer">
+            <intent-filter>
+                <action android:name="com.lqz.first.messenger" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <provider
+            android:name=".MyContentProvider"
+            android:authorities="com.lqz.first.myprovider"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".AddContactActivity" />
+
+        <service
+            android:name=".SocketTCPService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":socket">
+            <intent-filter>
+                <action android:name="com.lqz.first.tcpsocket" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".BinderPollActivity" />
+
+        <service
+            android:name=".binderpoll.BinderPoolService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":binderpool">
+            <intent-filter>
+                <action android:name="com.lqz.first.binderpool" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>
